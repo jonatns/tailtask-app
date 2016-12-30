@@ -1,0 +1,17 @@
+<form {{action 'login' on='submit' }} class="ui large form error">
+  <div class="ui stacked segment">
+    <div class="field primary">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        {{input value=credentials.identification class="form-control"}}
+      </div>
+    </div>
+    <div class="field primary">
+      <div class="ui left icon input">
+        <i class="lock icon"></i>
+        {{input type="password" value=credentials.password class="form-control"}}
+      </div>
+    </div>
+    <button class="ui fluid large positive basic submit button">Login</button>
+  </div>
+</form>

@@ -1,0 +1,21 @@
+<div class="register-space"></div>
+<div class="ui centered grid">
+  <div class="six wide column">
+    <div class="register-logo">
+      <h2 class="ui green image header">
+        <img id="login-img" src="./assets/images/tailtask_logo.png" class="image">
+      </h2>
+    </div>
+    {{register-form user=model.user company=model.company register='register'}}
+    <br>
+    <div class="ui horizontal divider">
+      Or
+    </div>
+    <br>
+    <div class="register-login-btn">
+      {{#link-to 'login' tagName='button' class='ui positive basic button'}}
+        Login
+      {{/link-to}}
+    </div>
+  </div>
+</div>

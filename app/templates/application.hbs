@@ -1,25 +1,32 @@
-<h1>Users</h1>
-<ul>
-  {{#each model.users as |user|}}
-    <li>{{user.firstname}} - Tasks:
-      {{#each user.tasks as |task|}}
-        {{task.title}},
-      {{/each}}
-    </li>
-  {{/each}}
-</ul>
-<h1>Tasks</h1>
-{{add-task store=store addTask='addTask'}}
-
-<ul>
-  {{#each model.tasks as |task|}}
-    <li>
-      {{task.title}} - Users:
-      {{#each task.users as |user|}}
-        {{user.email}},
-      {{/each}}
-      {{select-user users=model.users task=task assignTask='assignTask'}}
-    </li>
-    <br>
-  {{/each}}
-</ul>
+<div class="wrapper">
+  {{#if session.isAuthenticated}}
+    <div class="ui top attached demo menu">
+      <a id="menu-btn" class="item" {{action 'toggle'}}>
+        <i class="sidebar icon"></i>
+        Menu
+      </a>
+      <div class="right menu">
+        {{#if session.isAuthenticated}}
+          <a class="ui item" {{action 'logout'}}>Logout</a>
+        {{else}}
+          {{#link-to "login"}}<a class="ui item">Login</a>{{/link-to}}
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
+  <div class="ui bottom attached segment pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      {{#link-to "tasks"}}
+        <a class="item" {{action 'toggle'}}>
+          <i class="tasks icon"></i>
+          Tasks
+        </a>
+      {{/link-to}}
+    </div>
+      <div class="pusher">
+        <div class="ui basic segment">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </div>

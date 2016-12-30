@@ -1,0 +1,25 @@
+<form {{action 'register' on='submit' }} class="ui large form error">
+  <div class="ui stacked segment">
+    <div class="two fields">
+      <div class="field">
+        <label>Firstname</label>
+        {{input type="text" value=user.firstname}}
+      </div>
+      <div class="field">
+        <label class="">Lastname</label>
+        {{input type="text" value=user.lastname}}
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>Email</label>
+        {{input type="text" value=user.email}}
+      </div>
+      <div class="field">
+        <label class="">Company Name</label>
+        {{input type="text" value=company.name}}
+      </div>
+    </div>
+    <button class="ui fluid large positive basic submit button">Register</button>
+  </div>
+</form>

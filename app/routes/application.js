@@ -1,20 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() {
-    return Ember.RSVP.hash({
-      users: this.store.findAll('user'),
-      tasks: this.store.findAll('task')
-    });
-  },
+  session: Ember.inject.service(),
   actions: {
-    addTask(task) {
-      task.save();
+    logout() {
+      var _this = this;
+      this.get('session').invalidate().then(function() {
+        _this.store.unloadAll();
+        _this.transitionTo('login');
+      });
     },
-    assignTask(user_id, task) {
-      const user = this.store.peekRecord('user', user_id);
-      task.get('users').pushObject(user);
-      task.save();
-    }
   }
 });

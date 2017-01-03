@@ -2,5 +2,6 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name: DS.attr(),
-  users: DS.hasMany('user')
+  users: DS.hasMany('user'),
+  tasks: DS.hasMany('task')
 });

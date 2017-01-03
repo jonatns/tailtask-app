@@ -5,5 +5,5 @@ export default DS.Model.extend({
   lastname: DS.attr(),
   email: DS.attr(),
   company: DS.belongsTo('company'),
-  tasks: DS.hasMany('task', {async: true})
+  tasks: DS.hasMany('task')
 });

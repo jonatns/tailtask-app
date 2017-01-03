@@ -1,15 +1,28 @@
 <div class="wrapper">
   {{#if session.isAuthenticated}}
-    <div class="ui top attached demo menu">
+    <div class="ui top attached menu">
       <a id="menu-btn" class="item" {{action 'toggle'}}>
-        <i class="sidebar icon"></i>
+        <i class="blue sidebar icon"></i>
         Menu
+      </a>
+      <div id="menu-btn" class="item"></div>
+      <a {{action 'openAddTaskModal'}} class="item">
+        <i class="green plus icon"></i>
+        Add Task
       </a>
       <div class="right menu">
         {{#if session.isAuthenticated}}
-          <a class="ui item" {{action 'logout'}}>Logout</a>
+          <a class="ui item" {{action 'logout'}}>
+            <i class="user icon"></i>
+            Logout
+          </a>
         {{else}}
-          {{#link-to "login"}}<a class="ui item">Login</a>{{/link-to}}
+          {{#link-to "login"}}
+            <a class="ui item">
+              <i class="user icon"></i>
+              Login
+            </a>
+          {{/link-to}}
         {{/if}}
       </div>
     </div>
@@ -22,10 +35,51 @@
           Tasks
         </a>
       {{/link-to}}
+      {{#link-to "users"}}
+        <a class="item" {{action 'toggle'}}>
+          <i class="users icon"></i>
+          Users
+        </a>
+      {{/link-to}}
     </div>
       <div class="pusher">
         <div class="ui basic segment">
-          {{outlet}}
+          <div class="ui grid">
+            {{#if session.isAuthenticated}}
+              <div class="ui row">
+                <div class="sixteen wide column">
+                  <button {{action 'toggleMap'}} class="ui button">{{mapBtnLabel}}</button>
+                  <button class="ui button">Map Options</button>
+                </div>
+              </div>
+              {{#if isMapVisible}}
+                <div class="ui row">
+                  <div class="sixteen wide column">
+                      {{#if isMapLoading}}
+                        <div id="main-map-container">
+                          <div class="loading-map">
+                            <img id="login-img" src="./assets/images/loading-map.gif" style="height: 50px; width: auto;">  <br>
+                            Loading Map...
+                          </div>
+                        </div>
+                      {{else}}
+                        <div id="main-map-container">
+                          {{g-map latitude=currentLat longitude=currentLng zoom=8 markers=markers}}
+                        </div>
+                      {{/if}}
+                  </div>
+                </div>
+                {{/if}}
+              {{/if}}
+            <div class="ui row">
+              <div class="sixteen wide column">
+                {{outlet}}
+                {{#if isAddTaskModalVisible}}
+                  {{add-task-modal closeAddTaskModal='closeAddTaskModal'}}
+                {{/if}}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

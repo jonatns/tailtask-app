@@ -16,11 +16,16 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+
     }
+  };
+
+  ENV.contentSecurityPolicy = {
+    'script-src': "'self' 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com",
+    'img-src': "'self' https://*.googleapis.com https://*.gstatic.com",
+    'font-src': "'self' https://*.gstatic.com",
+    'style-src': "'self' 'unsafe-inline' https://*.googleapis.com"
   };
 
   ENV.HOST = 'http://localhost:3000';
@@ -33,6 +38,7 @@ module.exports = function(environment) {
     identificationField: 'email',
     timeFactor: 1,
     serverTokenEndpoint: 'http://localhost:3000/api/auth',
+    serverTokenRefreshEndpoint: 'http://localhost:3000/api/auth/refresh',
     authorizationPrefix: 'Bearer ',
     authorizationHeaderName: 'Authorization'
   };

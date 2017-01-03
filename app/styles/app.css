@@ -33,3 +33,47 @@ body {
 .register-login-btn {
   text-align: center;
 }
+
+#main-map-container {
+  text-align: center;
+  border-radius: 4px !important;
+  height: 350px;
+  background-color: #E5E3DF;
+}
+
+.loading-map {
+  border-radius: 4px !important;
+  text-align: center;
+  padding-top: 125px;
+}
+
+.loading-add-task-map {
+  border-radius: 4px !important;
+  text-align: center;
+  padding-top: 80px;
+}
+
+#add-task-map-container {
+  text-align: center;
+  border-radius: 4px !important;
+  height: 250px;
+  background-color: #E5E3DF;
+}
+
+#add-task-map{
+  border-radius: 4px !important;
+  height: 250px;
+}
+
+.map-canvas {
+  border-radius: 4px !important;
+  height: 350px;
+}
+
+.gm-style {
+  border-radius: 4px !important;
+}
+
+.pac-container {
+  z-index: 1500;
+}

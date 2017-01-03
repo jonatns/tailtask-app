@@ -1,0 +1,49 @@
+<div class="ui modal add-task">
+  <div class="header">
+    <i class="green plus icon"></i>
+    Add Task
+  </div>
+  <div class="content">
+    <div class="ui grid">
+        <div class="eight wide column">
+          <div class="ui form">
+            <div class="field">
+              <label>Title</label>
+              {{input value=task.title}}
+            </div>
+            <div class="field">
+              <label>Description</label>
+              {{textarea rows=8 value=task.description}}
+            </div>
+          </div>
+        </div>
+        <div class="eight wide column">
+          <div class="ui form">
+            <div class="field">
+              <label>Search location:</label>
+              {{g-place-autocomplete placeChanged='placeChanged'}}
+            </div>
+            <div id="add-task-map-container">
+              {{#if isMapLoading}}
+                  <div class="loading-add-task-map">
+                    <img id="login-img" src="./assets/images/loading-map.gif" style="height: 50px; width: auto;">  <br>
+                    Loading Map...
+                  </div>
+                {{else}}
+                  {{g-map id="add-task-map" setMap='setMap' latitude=currentLat longitude=currentLng isDraggable=true onDrag='onDrag'zoom=8 markers=markers}}
+                {{/if}}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button {{action "closeAddTaskModal" bubbles=false preventDefault=true}} class="ui black deny button">
+      Cancel
+    </button>
+    <div class="ui positive right labeled icon button">
+      Add
+      <i class="plus icon"></i>
+    </div>
+  </div>
+</div>

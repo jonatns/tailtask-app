@@ -1,6 +1,16 @@
-<h1>tasks</h1>
-<ul>
-  {{#each model as |task|}}
-    <li>{{task.title}}</li>
-  {{/each}}
-</ul>
+<table class="ui green selectable table">
+  <thead>
+    <tr>
+      <th>Tasks</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |task|}}
+      <tr>
+        <td>{{task.title}}</td>
+        <td class="right aligned collapsing">{{task.users.length}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
